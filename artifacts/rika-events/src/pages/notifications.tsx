@@ -15,7 +15,7 @@ export default function NotificationsPage() {
 
   const handleMarkRead = (id: number) => {
     markRead.mutate(
-      { data: { read: true } },
+      { id, data: { read: true } },
       {
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: getGetNotificationsQueryKey() });

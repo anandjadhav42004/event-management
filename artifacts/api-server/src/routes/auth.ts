@@ -2,17 +2,16 @@ import { Router } from "express";
 import { db } from "@workspace/db";
 import { usersTable } from "@workspace/db";
 import { eq } from "drizzle-orm";
-import * as crypto from "crypto";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import { requireAuth } from "../middlewares/auth";
 
 const router = Router();
 
-function hashPassword(password: string): string {
-  return crypto.createHash("sha256").update(password + "rika_salt_2024").digest("hex");
-}
+const JWT_SECRET = process.env.JWT_SECRET || "rika_jwt_secret_default_2026";
 
 function generateToken(userId: number, role: string): string {
-  const payload = JSON.stringify({ userId, role, exp: Date.now() + 7 * 24 * 60 * 60 * 1000 });
-  return Buffer.from(payload).toString("base64");
+  return jwt.sign({ userId, role }, JWT_SECRET, { expiresIn: "7d" });
 }
 
 function formatUser(user: typeof usersTable.$inferSelect) {
@@ -38,10 +37,11 @@ router.post("/auth/register", async (req, res) => {
     if (existing.length > 0) {
       return res.status(400).json({ error: "Email already registered" });
     }
+    const hashedPassword = await bcrypt.hash(password, 12);
     const [user] = await db.insert(usersTable).values({
       name,
       email,
-      passwordHash: hashPassword(password),
+      passwordHash: hashedPassword,
       role,
       phone: phone ?? null,
       status: "active",
@@ -61,7 +61,12 @@ router.post("/auth/login", async (req, res) => {
       return res.status(400).json({ error: "email and password required" });
     }
     const [user] = await db.select().from(usersTable).where(eq(usersTable.email, email)).limit(1);
-    if (!user || user.passwordHash !== hashPassword(password)) {
+    if (!user) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+    
+    const isMatch = await bcrypt.compare(password, user.passwordHash);
+    if (!isMatch) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
     const token = generateToken(user.id, user.role);
@@ -72,16 +77,16 @@ router.post("/auth/login", async (req, res) => {
   }
 });
 
-router.get("/auth/me", async (req, res) => {
+router.get("/auth/me", requireAuth, async (req, res) => {
   try {
-    const auth = req.headers.authorization;
-    if (!auth?.startsWith("Bearer ")) return res.status(401).json({ error: "Unauthorized" });
-    const payload = JSON.parse(Buffer.from(auth.slice(7), "base64").toString());
-    const [user] = await db.select().from(usersTable).where(eq(usersTable.id, payload.userId)).limit(1);
+    const userId = req.user?.id;
+    if (!userId) return res.status(401).json({ error: "Unauthorized" });
+    const [user] = await db.select().from(usersTable).where(eq(usersTable.id, userId)).limit(1);
     if (!user) return res.status(401).json({ error: "User not found" });
     return res.json(formatUser(user));
-  } catch {
-    return res.status(401).json({ error: "Invalid token" });
+  } catch (err) {
+    req.log.error(err);
+    return res.status(500).json({ error: "Internal server error" });
   }
 });
 

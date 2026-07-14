@@ -9,6 +9,8 @@ import {
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import { motion, AnimatePresence } from 'framer-motion';
+import { containerVariants, itemVariantsX } from '@/lib/animations';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -95,83 +97,200 @@ export function Sidebar({ isOpen, userRole }: SidebarProps) {
   const nav = isClient ? clientNav : adminNav;
 
   return (
-    <div 
-      className={cn(
-        "flex flex-col w-64 h-full bg-sidebar border-r border-sidebar-border transition-all duration-300 flex-shrink-0 relative",
-        !isOpen && "-ml-64 md:ml-0 md:w-20"
-      )}
+    <motion.div
+      animate={{ width: isOpen ? 256 : 80 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="flex flex-col h-full bg-sidebar border-r border-sidebar-border flex-shrink-0 relative overflow-hidden"
+      style={{ minWidth: isOpen ? 256 : 80 }}
     >
+      {/* Logo */}
       <div className="flex h-16 items-center justify-center border-b border-sidebar-border px-4">
-        {(!isOpen) ? (
-          <span className="font-serif text-2xl font-bold text-primary tracking-widest hidden md:block">R</span>
-        ) : (
-          <span className="font-serif text-2xl font-bold text-primary tracking-widest">RIKA</span>
-        )}
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.span
+              key="full"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.2 }}
+              className="font-serif text-2xl font-bold text-primary tracking-widest"
+            >
+              RIKA
+            </motion.span>
+          ) : (
+            <motion.span
+              key="icon"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="font-serif text-2xl font-bold text-primary tracking-widest"
+            >
+              R
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
 
-      <div className="flex-1 overflow-y-auto py-6 flex flex-col gap-6 custom-scrollbar">
+      {/* Nav groups */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="flex-1 overflow-y-auto py-6 flex flex-col gap-6 custom-scrollbar"
+      >
         {nav.map((group, i) => (
           <div key={i} className="px-3">
-            {(!isOpen) ? (
-              <div className="h-4 hidden md:block"></div>
-            ) : (
-              <h3 className="mb-2 px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground font-sans">
-                {group.label}
-              </h3>
-            )}
-            
-            <div className="space-y-1">
+            <AnimatePresence>
+              {isOpen && (
+                <motion.h3
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -8 }}
+                  transition={{ duration: 0.2 }}
+                  className="mb-2 px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground font-sans"
+                >
+                  {group.label}
+                </motion.h3>
+              )}
+            </AnimatePresence>
+            {!isOpen && <div className="h-4 hidden md:block"></div>}
+
+            <div className="space-y-0.5">
               {group.items.map((item) => {
                 const isActive = location === item.href || location.startsWith(`${item.href}/`);
                 const Icon = item.icon;
-                
+
                 return (
                   <Link key={item.name} href={item.href}>
-                    <div className={cn(
-                      "flex items-center gap-3 rounded-md px-4 py-2.5 text-sm font-medium transition-colors cursor-pointer group",
-                      isActive 
-                        ? "bg-sidebar-accent text-sidebar-accent-foreground border-l-2 border-primary" 
-                        : "text-sidebar-foreground hover:bg-sidebar-accent/50"
-                    )}>
-                      <Icon className={cn("h-5 w-5 shrink-0", isActive ? "text-primary" : "text-muted-foreground group-hover:text-sidebar-foreground")} />
-                      <span className={cn("transition-opacity", !isOpen && "md:hidden")}>{item.name}</span>
-                    </div>
+                    <motion.div
+                      variants={itemVariantsX}
+                      whileHover={{ x: 2, backgroundColor: 'hsl(var(--sidebar-accent) / 0.7)' }}
+                      whileTap={{ scale: 0.97 }}
+                      className={cn(
+                        'flex items-center gap-3 rounded-md px-4 py-2.5 text-sm font-medium cursor-pointer group relative',
+                        isActive
+                          ? 'bg-sidebar-accent text-sidebar-accent-foreground'
+                          : 'text-sidebar-foreground'
+                      )}
+                    >
+                      {/* Active indicator bar */}
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeNav"
+                          className="absolute left-0 top-1 bottom-1 w-0.5 bg-primary rounded-full"
+                          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                        />
+                      )}
+                      <motion.div
+                        whileHover={{ scale: 1.15 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Icon className={cn(
+                          'h-5 w-5 shrink-0',
+                          isActive ? 'text-primary' : 'text-muted-foreground group-hover:text-sidebar-foreground'
+                        )} />
+                      </motion.div>
+                      <AnimatePresence>
+                        {isOpen && (
+                          <motion.span
+                            initial={{ opacity: 0, x: -6 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -6 }}
+                            transition={{ duration: 0.18 }}
+                          >
+                            {item.name}
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
                   </Link>
                 );
               })}
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
 
+      {/* Footer */}
       <div className="border-t border-sidebar-border p-4">
         <div className="flex items-center gap-3 mb-4">
-          <Avatar className="h-10 w-10 border border-primary/20">
-            <AvatarImage src={user?.avatar || undefined} alt={user?.name} />
-            <AvatarFallback className="bg-primary/10 text-primary font-bold">{user?.name?.charAt(0) || 'U'}</AvatarFallback>
-          </Avatar>
-          <div className={cn("flex flex-col overflow-hidden", !isOpen && "md:hidden")}>
-            <span className="text-sm font-semibold truncate">{user?.name}</span>
-            <span className="text-xs text-muted-foreground uppercase tracking-wide">{user?.role}</span>
-          </div>
+          <motion.div whileHover={{ scale: 1.08 }} transition={{ duration: 0.2 }}>
+            <Avatar className="h-10 w-10 border border-primary/20">
+              <AvatarImage src={user?.avatar || undefined} alt={user?.name} />
+              <AvatarFallback className="bg-primary/10 text-primary font-bold">
+                {user?.name?.charAt(0) || 'U'}
+              </AvatarFallback>
+            </Avatar>
+          </motion.div>
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -8 }}
+                transition={{ duration: 0.2 }}
+                className="flex flex-col overflow-hidden"
+              >
+                <span className="text-sm font-semibold truncate">{user?.name}</span>
+                <span className="text-xs text-muted-foreground uppercase tracking-wide">{user?.role}</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-        <div className={cn("flex flex-col gap-2", !isOpen && "md:items-center")}>
+
+        <div className={cn('flex flex-col gap-2', !isOpen && 'md:items-center')}>
           <Link href="/settings">
-            <div className={cn("flex items-center gap-3 rounded-md px-4 py-2 text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent/50 cursor-pointer", !isOpen && "md:px-0 md:justify-center w-full")}>
-              <Settings className="h-5 w-5 text-muted-foreground" />
-              <span className={cn(!isOpen && "md:hidden")}>Settings</span>
-            </div>
+            <motion.div
+              whileHover={{ x: 2 }}
+              whileTap={{ scale: 0.97 }}
+              className={cn(
+                'flex items-center gap-3 rounded-md px-4 py-2 text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent/50 cursor-pointer',
+                !isOpen && 'md:px-0 md:justify-center w-full'
+              )}
+            >
+              <motion.div whileHover={{ rotate: 45 }} transition={{ duration: 0.3 }}>
+                <Settings className="h-5 w-5 text-muted-foreground" />
+              </motion.div>
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    Settings
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </motion.div>
           </Link>
-          <Button 
-            variant="ghost" 
-            className={cn("w-full justify-start text-muted-foreground hover:text-destructive hover:bg-destructive/10", !isOpen && "md:justify-center md:px-0")}
+
+          <Button
+            variant="ghost"
+            className={cn(
+              'w-full justify-start text-muted-foreground hover:text-destructive hover:bg-destructive/10',
+              !isOpen && 'md:justify-center md:px-0'
+            )}
             onClick={() => clearAuth()}
           >
             <LogOut className="h-5 w-5 mr-3 md:mr-0" />
-            <span className={cn(!isOpen && "md:hidden")}>Sign Out</span>
+            <AnimatePresence>
+              {isOpen && (
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  Sign Out
+                </motion.span>
+              )}
+            </AnimatePresence>
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
