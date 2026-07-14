@@ -1,0 +1,753 @@
+You are an elite software engineering team consisting of:
+
+- CEO
+- CTO
+- Principal Software Architect
+- Senior Product Manager
+- Senior UI/UX Designer
+- Senior Frontend Engineer
+- Senior Backend Engineer
+- Database Architect
+- DevOps Engineer
+- Cloud Architect
+- AI Engineer
+- Cybersecurity Expert
+- QA Lead
+
+Your mission is to build a COMPLETE production-ready enterprise Event Management Platform.
+
+IMPORTANT:
+First, carefully analyze the uploaded image. The image is NOT just inspiration—it contains the initial business requirements. Extract every feature, workflow, module, dashboard, and business process shown. Then improve and expand them into an enterprise SaaS platform.
+
+Do NOT build a demo.
+Do NOT generate placeholder pages.
+Do NOT skip features.
+Do NOT stop after the landing page.
+Continue building until the entire application is complete.
+
+====================================================
+PROJECT NAME
+====================================================
+
+Rika Events
+
+Tagline:
+Create Memories
+
+Platform Type:
+Enterprise Event Management Platform
+
+Brand Style:
+Luxury
+Modern
+Professional
+Minimal
+
+Primary Colors
+
+Luxury Purple (#3E1B5B)
+
+Gold (#C8A45D)
+
+White
+
+Light Gray
+
+Dark Theme
+
+Use smooth animations.
+Use glassmorphism where appropriate.
+Fully responsive.
+Mobile-first.
+
+====================================================
+ANALYZE THE UPLOADED IMAGE
+====================================================
+
+Extract and improve every module shown in the uploaded image including:
+
+Venue Booking
+
+Room Booking
+
+Vendor Management
+
+Guest Management
+
+Rooming List
+
+Decor Catalog
+
+Quotation Engine
+
+Pricing Engine
+
+Anchor Management
+
+WhatsApp Integration
+
+Notifications
+
+Client Login
+
+Wedding Dashboard
+
+Operations Dashboard
+
+Inventory Tracking
+
+Admin Dashboard
+
+Wedding Status Tracking
+
+Calendar
+
+Recent Activity
+
+Task Progress
+
+Booking Timeline
+
+Payment Status
+
+Vendor Confirmation
+
+Room Allocation
+
+Security Features
+
+Role Based Access
+
+Audit Logging
+
+Cloud Ready Architecture
+
+Encrypted Database
+
+Expand these into a world-class SaaS platform.
+
+====================================================
+TARGET USERS
+====================================================
+
+Super Admin
+
+Admin
+
+Event Company
+
+Wedding Planner
+
+Corporate Planner
+
+Organizer
+
+Venue Owner
+
+Vendor
+
+Decorator
+
+Photographer
+
+Caterer
+
+Anchor
+
+Artist
+
+Guest
+
+Volunteer
+
+Finance Team
+
+Operations Team
+
+Marketing Team
+
+Client
+
+====================================================
+TECH STACK
+====================================================
+
+Frontend
+
+Next.js (App Router)
+
+React
+
+TypeScript
+
+TailwindCSS
+
+Shadcn UI
+
+Framer Motion
+
+React Hook Form
+
+Zod
+
+TanStack Query
+
+Backend
+
+NestJS
+
+TypeScript
+
+REST API
+
+Database
+
+PostgreSQL
+
+Prisma ORM
+
+Authentication
+
+JWT
+
+Refresh Token
+
+Google Login
+
+OTP Login
+
+Role Based Access Control
+
+Storage
+
+AWS S3 Compatible
+
+Redis
+
+BullMQ
+
+Socket.io
+
+Docker
+
+Docker Compose
+
+====================================================
+CORE MODULES
+====================================================
+
+Inquiry Management
+
+CRM
+
+Lead Pipeline
+
+Kanban
+
+Venue Management
+
+Room Management
+
+Vendor Management
+
+Guest Management
+
+Invitation Management
+
+RSVP
+
+Wedding Planning
+
+Corporate Event Planning
+
+Quotation Generator
+
+Pricing Engine
+
+PDF Quotation
+
+GST Calculation
+
+Package Builder
+
+Booking Management
+
+Calendar
+
+Timeline
+
+Task Management
+
+Inventory
+
+Asset Tracking
+
+Purchase Management
+
+Expense Tracking
+
+Finance
+
+Invoices
+
+Payments
+
+Refunds
+
+Vendor Payments
+
+Client Dashboard
+
+Wedding Dashboard
+
+Operations Dashboard
+
+Analytics Dashboard
+
+Marketing Dashboard
+
+Notification Center
+
+Document Management
+
+Media Library
+
+Reports
+
+====================================================
+EVENT WORKFLOW
+====================================================
+
+Inquiry
+
+↓
+
+Lead
+
+↓
+
+Meeting
+
+↓
+
+Quotation
+
+↓
+
+Negotiation
+
+↓
+
+Approval
+
+↓
+
+Booking
+
+↓
+
+Advance Payment
+
+↓
+
+Venue Confirmation
+
+↓
+
+Vendor Assignment
+
+↓
+
+Decor Planning
+
+↓
+
+Guest Invitation
+
+↓
+
+Room Allocation
+
+↓
+
+Timeline Planning
+
+↓
+
+Execution
+
+↓
+
+Live Tracking
+
+↓
+
+Completion
+
+↓
+
+Feedback
+
+↓
+
+Analytics
+
+====================================================
+WEBSITE PAGES
+====================================================
+
+Landing Page
+
+Home
+
+Features
+
+Solutions
+
+Industries
+
+Pricing
+
+About
+
+Contact
+
+Blog
+
+Help Center
+
+FAQs
+
+Privacy Policy
+
+Terms
+
+Refund Policy
+
+Cookie Policy
+
+====================================================
+AUTHENTICATION
+====================================================
+
+Signup
+
+Login
+
+OTP Login
+
+Google Login
+
+Forgot Password
+
+2FA
+
+Role Selection
+
+Profile Setup
+
+====================================================
+DASHBOARDS
+====================================================
+
+Super Admin Dashboard
+
+Admin Dashboard
+
+Organizer Dashboard
+
+Vendor Dashboard
+
+Client Dashboard
+
+Finance Dashboard
+
+Operations Dashboard
+
+Marketing Dashboard
+
+Each dashboard must include
+
+Analytics
+
+Charts
+
+Notifications
+
+Tasks
+
+Calendar
+
+Search
+
+Dark Mode
+
+Responsive Layout
+
+====================================================
+AI FEATURES
+====================================================
+
+AI Event Planner
+
+AI Budget Estimator
+
+AI Vendor Recommendation
+
+AI Venue Recommendation
+
+AI Decor Suggestions
+
+AI Schedule Generator
+
+AI Chatbot
+
+AI Marketing Generator
+
+AI Email Generator
+
+AI WhatsApp Generator
+
+AI Predictive Analytics
+
+====================================================
+PAYMENTS
+====================================================
+
+Razorpay
+
+Stripe
+
+PayPal
+
+UPI
+
+Cards
+
+GST
+
+Invoices
+
+Refunds
+
+Coupons
+
+Promo Codes
+
+Wallet
+
+Subscriptions
+
+====================================================
+SECURITY
+====================================================
+
+JWT
+
+RBAC
+
+AES Encryption
+
+Password Hashing
+
+Audit Logs
+
+Rate Limiting
+
+CSRF Protection
+
+XSS Protection
+
+SQL Injection Protection
+
+Device Sessions
+
+====================================================
+DATABASE
+====================================================
+
+Generate a complete PostgreSQL database.
+
+Include
+
+Tables
+
+Relationships
+
+Indexes
+
+Foreign Keys
+
+Audit Fields
+
+Soft Deletes
+
+Seed Data
+
+====================================================
+API
+====================================================
+
+Generate complete REST APIs.
+
+Authentication
+
+CRUD
+
+Pagination
+
+Filtering
+
+Sorting
+
+Validation
+
+Swagger
+
+====================================================
+UI COMPONENTS
+====================================================
+
+Buttons
+
+Cards
+
+Tables
+
+Calendar
+
+Timeline
+
+Kanban
+
+Charts
+
+Graphs
+
+Sidebar
+
+Navbar
+
+Footer
+
+Date Picker
+
+Time Picker
+
+Dropdown
+
+Modal
+
+Drawer
+
+Toast
+
+Tooltip
+
+File Upload
+
+Gallery
+
+Rich Text Editor
+
+PDF Viewer
+
+QR Scanner
+
+Seat Map
+
+Venue Map
+
+====================================================
+REPORTS
+====================================================
+
+Booking Report
+
+Revenue Report
+
+Vendor Report
+
+Guest Report
+
+Attendance Report
+
+Inventory Report
+
+Financial Report
+
+GST Report
+
+====================================================
+PROJECT STRUCTURE
+====================================================
+
+frontend/
+
+backend/
+
+shared/
+
+database/
+
+docker/
+
+docs/
+
+====================================================
+CODE QUALITY
+====================================================
+
+Use clean architecture.
+
+Reusable components.
+
+Production-ready code.
+
+No duplicate code.
+
+Strong TypeScript typing.
+
+Validation everywhere.
+
+Proper error handling.
+
+Loading states.
+
+Skeleton screens.
+
+Accessibility.
+
+SEO.
+
+Responsive.
+
+Dark Mode.
+
+====================================================
+FINAL REQUIREMENTS
+====================================================
+
+Do NOT create placeholder pages.
+
+Do NOT use fake buttons.
+
+Every page must work.
+
+Every module must be connected.
+
+Every API must be functional.
+
+Every database table must be related.
+
+Every dashboard must use real backend data.
+
+Every form must validate inputs.
+
+Every action must update the database.
+
+Generate production-quality code.
+
+Automatically continue building module by module until the entire enterprise Event Management Platform is complete.
+
+Do not stop after one response. Continue until every module, API, database schema, dashboard, frontend page, backend service, and deployment configuration has been fully generated.

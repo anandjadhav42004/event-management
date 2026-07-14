@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Rika Events"
+version = "1.0.0"
+id = "artifacts/rika-events"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19392
+
+[services.development]
+run = "pnpm --filter @workspace/rika-events run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/rika-events", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/rika-events/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19392"
+BASE_PATH = "/"
