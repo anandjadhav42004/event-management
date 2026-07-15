@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { motion } from 'framer-motion';
-import { Calendar, Users, Building, Diamond, Star, ArrowRight, ShieldCheck, Clock } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Calendar, Users, Building, Diamond, Star, ArrowRight, ShieldCheck, Clock, X, Sparkles } from 'lucide-react';
+import { appImages, galleryImages } from '@/assets';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -16,6 +16,15 @@ const stagger = {
 };
 
 export default function LandingPage() {
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedImage, setSelectedImage] = useState<(typeof galleryImages)[number] | null>(null);
+
+  const categories = ['All', 'Wedding', 'Birthday', 'Corporate', 'Decoration', 'Reception', 'Venue', 'Luxury'];
+  const filteredImages = useMemo(() => {
+    if (activeCategory === 'All') return galleryImages;
+    return galleryImages.filter((image) => image.category === activeCategory || activeCategory === 'Luxury');
+  }, [activeCategory]);
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col font-sans selection:bg-primary/30">
       {/* Navigation */}
@@ -41,9 +50,16 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden flex-1 flex flex-col justify-center">
         <div className="absolute inset-0 z-0">
-          <img src={heroBg} alt="Luxury Event" className="w-full h-full object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent"></div>
+          <motion.img
+            src={appImages.hero}
+            alt="Luxury Event"
+            className="w-full h-full object-cover"
+            initial={{ scale: 1.08, opacity: 0.8 }}
+            animate={{ scale: 1, opacity: 0.28 }}
+            transition={{ duration: 1.2 }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent"></div>
         </div>
         
         <div className="container mx-auto px-6 relative z-10">
@@ -177,36 +193,68 @@ export default function LandingPage() {
               </ul>
             </div>
             <div className="lg:w-1/2 w-full">
-              <div className="relative rounded-2xl border border-white/10 bg-background shadow-2xl overflow-hidden aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-card to-background">
-                {/* Abstract UI representation instead of generic screenshot */}
-                <div className="w-[80%] h-[80%] rounded-xl border border-white/5 shadow-2xl bg-card flex flex-col overflow-hidden">
-                  <div className="h-12 border-b border-white/5 flex items-center px-4 gap-2">
-                    <div className="w-3 h-3 rounded-full bg-white/10"></div>
-                    <div className="w-3 h-3 rounded-full bg-white/10"></div>
-                    <div className="w-3 h-3 rounded-full bg-white/10"></div>
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="relative rounded-2xl border border-white/10 bg-background shadow-2xl overflow-hidden aspect-[4/3]"
+              >
+                <img src={appImages.corporate} alt="Client portal preview" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6 rounded-xl border border-white/10 bg-background/70 backdrop-blur p-4">
+                  <div className="flex items-center gap-2 text-primary text-sm uppercase tracking-[0.3em]">
+                    <Sparkles className="h-4 w-4" /> Luxury experience
                   </div>
-                  <div className="flex-1 p-6 flex gap-6">
-                    <div className="w-1/4 flex flex-col gap-4">
-                      <div className="h-8 bg-white/5 rounded-md"></div>
-                      <div className="h-8 bg-white/5 rounded-md w-3/4"></div>
-                      <div className="h-8 bg-white/5 rounded-md w-5/6"></div>
-                    </div>
-                    <div className="w-3/4 flex flex-col gap-6">
-                      <div className="flex gap-4">
-                        <div className="h-24 flex-1 bg-primary/10 border border-primary/20 rounded-xl"></div>
-                        <div className="h-24 flex-1 bg-white/5 rounded-xl"></div>
-                        <div className="h-24 flex-1 bg-white/5 rounded-xl"></div>
-                      </div>
-                      <div className="flex-1 bg-white/5 rounded-xl"></div>
-                    </div>
-                  </div>
+                  <div className="mt-2 text-xl font-medium">Clients receive a premium, branded journey from invitation to celebration.</div>
                 </div>
-                
-                {/* Floating decorative elements */}
-                <div className="absolute top-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-[40px]"></div>
-                <div className="absolute bottom-10 left-10 w-40 h-40 bg-amber-500/10 rounded-full blur-[50px]"></div>
-              </div>
+              </motion.div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="py-24 md:py-32 relative">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+            <div>
+              <div className="text-sm uppercase tracking-[0.35em] text-primary mb-3">Curated gallery</div>
+              <h2 className="font-serif text-4xl md:text-5xl">Signature moments from our finest events</h2>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`rounded-full border px-3 py-1.5 text-sm transition ${activeCategory === category ? 'border-primary bg-primary/15 text-primary' : 'border-white/10 bg-white/5 text-muted-foreground hover:text-foreground'}`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredImages.map((image, index) => (
+              <motion.button
+                key={`${image.title}-${index}`}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: index * 0.05 }}
+                whileHover={{ y: -6, scale: 1.01 }}
+                onClick={() => setSelectedImage(image)}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-card/40 text-left"
+              >
+                <img src={image.src} alt={image.title} className="h-64 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <div className="text-xs uppercase tracking-[0.3em] text-primary">{image.category}</div>
+                  <div className="mt-1 text-lg font-medium">{image.title}</div>
+                </div>
+              </motion.button>
+            ))}
           </div>
         </div>
       </section>
@@ -264,6 +312,38 @@ export default function LandingPage() {
           </Link>
         </div>
       </section>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-background/90 p-4 backdrop-blur"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-card/90"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img src={selectedImage.src} alt={selectedImage.title} className="max-h-[80vh] w-full object-contain" />
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute right-4 top-4 rounded-full border border-white/10 bg-background/80 p-2"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/95 to-transparent p-6">
+                <div className="text-xs uppercase tracking-[0.3em] text-primary">{selectedImage.category}</div>
+                <div className="text-2xl font-medium">{selectedImage.title}</div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Footer */}
       <footer className="bg-background py-12 border-t border-white/5">

@@ -13,6 +13,7 @@ import {
   pageVariants,
   SKELETON_CLASS,
 } from '@/lib/animations';
+import { appImages } from '@/assets';
 
 export default function VenuesPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -99,14 +100,11 @@ export default function VenuesPage() {
                         style={{ filter: 'grayscale(0.2)', opacity: 0.9 }}
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-card to-background">
-                        <motion.div
-                          whileHover={{ scale: 1.2, rotate: 10 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <MapPin className="w-12 h-12 text-white/10" />
-                        </motion.div>
-                      </div>
+                      <img
+                        src={appImages.venue}
+                        alt="Featured venue"
+                        className="w-full h-full object-cover"
+                      />
                     )}
                     <div className="absolute top-3 right-3">
                       <Badge

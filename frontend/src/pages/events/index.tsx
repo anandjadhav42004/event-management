@@ -25,6 +25,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useQueryClient } from '@tanstack/react-query';
 import { getGetEventsQueryKey } from '@/api';
 import { useToast } from '@/hooks/use-toast';
+import { appImages } from '@/assets';
 
 const eventSchema = z.object({
   title: z.string().min(2, 'Title is required'),
@@ -163,7 +164,15 @@ export default function EventsPage() {
         </Dialog>
       </div>
 
-      <Card className="bg-card/40 border-white/10 backdrop-blur">
+      <Card className="bg-card/40 border-white/10 backdrop-blur overflow-hidden">
+        <div className="relative h-56 overflow-hidden">
+          <img src={appImages.wedding} alt="Featured event" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+          <div className="absolute bottom-4 left-4 right-4">
+            <div className="text-xs uppercase tracking-[0.35em] text-primary">Curated luxury events</div>
+            <div className="mt-2 text-2xl font-serif">Showcase every celebratory milestone</div>
+          </div>
+        </div>
         <div className="p-4 border-b border-white/5 flex gap-4">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />

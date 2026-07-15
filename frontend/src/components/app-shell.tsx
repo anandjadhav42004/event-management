@@ -12,12 +12,19 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   React.useEffect(() => {
+    console.log('[app-shell] auth state', { token, user, location });
     if (!token) {
       setLocation('/login');
     }
-  }, [token, setLocation]);
+  }, [token, user, location, setLocation]);
 
-  if (!token || !user) return null;
+  if (!token || !user) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-background">
+        <div className="text-sm text-muted-foreground">Preparing your workspace…</div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen w-full bg-background overflow-hidden font-sans">

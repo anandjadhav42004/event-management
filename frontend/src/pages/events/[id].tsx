@@ -14,6 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Calendar, MapPin, Users, DollarSign, Clock, ChevronLeft, CheckSquare, Edit } from 'lucide-react';
 import { format } from 'date-fns';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { appImages } from '@/assets';
 
 export default function EventDetailPage({ params }: { params: { id: string } }) {
   const [location, setLocation] = useLocation();
@@ -71,6 +72,10 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
           </div>
         </div>
         <Button variant="outline" className="border-white/10 bg-white/5"><Edit className="w-4 h-4 mr-2" /> Edit Details</Button>
+      </div>
+
+      <div className="overflow-hidden rounded-3xl border border-white/10 bg-card/40">
+        <img src={event.type === 'corporate' ? appImages.corporate : event.type === 'birthday' ? appImages.birthday : appImages.wedding} alt={event.title} className="h-72 w-full object-cover" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
