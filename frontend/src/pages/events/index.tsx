@@ -166,7 +166,7 @@ export default function EventsPage() {
 
       <Card className="bg-card/40 border-white/10 backdrop-blur overflow-hidden">
         <div className="relative h-56 overflow-hidden">
-          <img src={appImages.wedding} alt="Featured event" className="h-full w-full object-cover" />
+          <img src={appImages.hero} alt="Featured event" className="h-full w-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           <div className="absolute bottom-4 left-4 right-4">
             <div className="text-xs uppercase tracking-[0.35em] text-primary">Curated luxury events</div>

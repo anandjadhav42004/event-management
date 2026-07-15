@@ -42,6 +42,7 @@ import PaymentsPage from '@/pages/payments';
 // Supporting
 import SettingsPage from '@/pages/settings';
 import NotificationsPage from '@/pages/notifications';
+import GalleryPage from '@/pages/gallery';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -90,6 +91,7 @@ function Router() {
       <Route path="/" component={LandingPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
+      <Route path="/gallery" component={GalleryPage} />
       
       {/* Protected Routes inside App Shell */}
       <Route path="/:rest*">

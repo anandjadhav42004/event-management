@@ -92,18 +92,20 @@ export default function VenuesPage() {
                   <div className="h-48 bg-white/5 relative overflow-hidden border-b border-white/5">
                     {venue.imageUrl ? (
                       <motion.img
-                        src={venue.imageUrl}
+                        src={venue.imageUrl || appImages.venue}
                         alt={venue.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full rounded-t-xl object-cover shadow-sm"
                         whileHover={{ scale: 1.06 }}
                         transition={{ duration: 0.4 }}
-                        style={{ filter: 'grayscale(0.2)', opacity: 0.9 }}
+                        style={{ filter: 'grayscale(0.15)', opacity: 0.95 }}
+                        loading="lazy"
                       />
                     ) : (
                       <img
                         src={appImages.venue}
                         alt="Featured venue"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full rounded-t-xl object-cover shadow-sm"
+                        loading="lazy"
                       />
                     )}
                     <div className="absolute top-3 right-3">

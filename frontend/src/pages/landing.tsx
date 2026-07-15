@@ -247,7 +247,7 @@ export default function LandingPage() {
                 onClick={() => setSelectedImage(image)}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-card/40 text-left"
               >
-                <img src={image.src} alt={image.title} className="h-64 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <img src={image.src} alt={image.alt} className="h-64 w-full rounded-t-2xl object-cover shadow-sm transition duration-500 group-hover:scale-105" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <div className="text-xs uppercase tracking-[0.3em] text-primary">{image.category}</div>
@@ -329,8 +329,9 @@ export default function LandingPage() {
               className="relative w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-card/90"
               onClick={(e) => e.stopPropagation()}
             >
-              <img src={selectedImage.src} alt={selectedImage.title} className="max-h-[80vh] w-full object-contain" />
+              <img src={selectedImage.src} alt={selectedImage.alt} className="max-h-[80vh] w-full object-contain" loading="lazy" />
               <button
+                aria-label="Close preview"
                 onClick={() => setSelectedImage(null)}
                 className="absolute right-4 top-4 rounded-full border border-white/10 bg-background/80 p-2"
               >

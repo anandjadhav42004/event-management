@@ -75,7 +75,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
       </div>
 
       <div className="overflow-hidden rounded-3xl border border-white/10 bg-card/40">
-        <img src={event.type === 'corporate' ? appImages.corporate : event.type === 'birthday' ? appImages.birthday : appImages.wedding} alt={event.title} className="h-72 w-full object-cover" />
+        <img src={event.type === 'corporate' ? appImages.corporate : event.type === 'birthday' ? appImages.birthday : event.type === 'wedding' ? appImages.wedding : appImages.reception} alt={event.title} className="h-72 w-full rounded-3xl object-cover shadow-[0_20px_50px_-24px_rgba(0,0,0,0.45)]" loading="lazy" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -109,7 +109,9 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
             <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Tasks</div>
             <div className="w-full mt-2">
               <div className="flex justify-between text-xs mb-1"><span>{completedTasks}/{totalTasks}</span> <span>{taskProgress}%</span></div>
-              <div className="w-full bg-white/5 rounded-full h-1.5"><div className="bg-chart-3 h-1.5 rounded-full" style={{ width: `${taskProgress}%` }}></div></div>
+              <div className="w-full bg-white/5 rounded-full h-1.5">
+                <div className="bg-chart-3 h-1.5 rounded-full" style={{ width: `${taskProgress}%` }} />
+              </div>
             </div>
           </CardContent>
         </Card>
