@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetTasks } from "@/api";
+import { useGetTasks } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, Calendar as CalendarIcon, Clock, CheckCircle } from 'lucide-react';
@@ -35,12 +35,12 @@ export default function ClientTasksPage() {
             </h2>
             <div className="space-y-3">
               {tasks?.filter(t => t.status !== 'completed').length === 0 ? (
-                <div className="text-muted-foreground italic bg-primary/5 p-6 rounded-xl border border-white/5 text-center">
+                <div className="text-muted-foreground italic bg-white/5 p-6 rounded-xl border border-white/5 text-center">
                   You're all caught up! No pending tasks right now.
                 </div>
               ) : (
                 tasks?.filter(t => t.status !== 'completed').map(task => (
-                  <Card key={task.id} className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl hover:bg-primary/5 transition-colors">
+                  <Card key={task.id} className="bg-card/40 border-white/10 backdrop-blur hover:bg-white/5 transition-colors">
                     <CardContent className="p-5 flex items-start gap-4">
                       <div className="w-6 h-6 rounded-full border-2 border-muted-foreground/30 flex-shrink-0 mt-0.5"></div>
                       <div className="flex-1">
@@ -59,7 +59,7 @@ export default function ClientTasksPage() {
                               Due: {format(new Date(task.dueDate), 'MMMM do, yyyy')}
                             </div>
                           )}
-                          <div className="px-2 py-1 rounded-sm bg-primary/5 uppercase tracking-wider">
+                          <div className="px-2 py-1 rounded-sm bg-white/5 uppercase tracking-wider">
                             Status: {task.status.replace('_', ' ')}
                           </div>
                         </div>

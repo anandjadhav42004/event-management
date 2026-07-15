@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetQuotations } from "@/api";
+import { useGetQuotations } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -23,7 +23,7 @@ export default function QuotationsPage() {
       case 'sent': return 'bg-blue-500/20 text-blue-400 border-blue-500/20';
       case 'viewed': return 'bg-amber-500/20 text-amber-400 border-amber-500/20';
       case 'rejected': return 'bg-destructive/20 text-destructive border-destructive/20';
-      case 'draft': return 'bg-primary/5 text-white border-white/10';
+      case 'draft': return 'bg-white/10 text-white border-white/10';
       default: return 'bg-gray-500/20 text-gray-400 border-gray-500/20';
     }
   };
@@ -38,7 +38,7 @@ export default function QuotationsPage() {
         <Button className="shadow-lg shadow-primary/20"><Plus className="w-4 h-4 mr-2" /> Draft Quotation</Button>
       </div>
 
-      <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+      <Card className="bg-card/40 border-white/10 backdrop-blur">
         <div className="p-4 border-b border-white/5 flex gap-4">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />

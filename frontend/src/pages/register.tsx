@@ -20,7 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useRegisterUser } from "@/api";
+import { useRegisterUser } from '@/api';
 import { useAuthStore } from '@/hooks/use-auth-store';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, ArrowRight } from 'lucide-react';
@@ -60,7 +60,7 @@ export default function RegisterPage() {
           setAuth(data.token, data.user);
           toast({
             title: 'Account created',
-            description: 'Welcome to VivahVerse.',
+            description: 'Welcome to Rika Events.',
           });
           
           if (data.user.role === 'client') {
@@ -81,30 +81,28 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center premium-gradient-bg py-12 px-4 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-background py-12 px-4 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[10%] right-[10%] w-[40%] h-[40%] bg-pink-100/50 rounded-full blur-[100px] animate-float"></div>
-        <div className="absolute bottom-[10%] left-[10%] w-[40%] h-[40%] bg-amber-100/50 rounded-full blur-[100px] animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-[30%] left-[20%] w-4 h-4 bg-primary/20 rounded-full animate-sparkle"></div>
-        <div className="absolute bottom-[20%] right-[15%] w-3 h-3 bg-amber-400/30 rounded-full animate-sparkle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-[10%] right-[10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[10%] left-[10%] w-[40%] h-[40%] bg-amber-500/5 rounded-full blur-[120px]"></div>
       </div>
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full max-w-lg relative z-10 animate-fade-in"
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-lg relative z-10"
       >
         <div className="mb-8 text-center">
           <Link href="/">
-            <div className="inline-block font-serif text-4xl font-bold tracking-widest text-transparent bg-clip-text premium-button-gradient cursor-pointer mb-6">VivahVerse</div>
+            <div className="inline-block font-serif text-3xl font-bold tracking-widest text-primary cursor-pointer mb-6">RIKA</div>
           </Link>
-          <h1 className="text-4xl font-serif font-medium mb-3 text-foreground">Create Unforgettable Weddings</h1>
-          <p className="text-muted-foreground font-sans text-lg">Join the elite network of event professionals</p>
+          <h1 className="text-3xl font-medium mb-2">Request Access</h1>
+          <p className="text-muted-foreground">Join the elite network of event professionals</p>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-xl border border-primary/10 p-8 rounded-3xl premium-shadow">
+        <div className="bg-card/50 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
               <FormField
@@ -190,13 +188,13 @@ export default function RegisterPage() {
 
               <Button 
                 type="submit" 
-                className="w-full h-14 text-lg rounded-xl premium-button-gradient border-0 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 mt-4" 
+                className="w-full h-12 text-base mt-2" 
                 disabled={registerMutation.isPending}
               >
                 {registerMutation.isPending ? (
                   <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                 ) : (
-                  <>Create Account <ArrowRight className="ml-2 h-5 w-5" /></>
+                  <>Create Account <ArrowRight className="ml-2 h-4 w-4" /></>
                 )}
               </Button>
             </form>

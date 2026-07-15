@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetEvents, useCreateEvent } from "@/api";
+import { useGetEvents, useCreateEvent } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -23,7 +23,7 @@ import * as z from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useQueryClient } from '@tanstack/react-query';
-import { getGetEventsQueryKey } from "@/api";
+import { getGetEventsQueryKey } from '@/api';
 import { useToast } from '@/hooks/use-toast';
 
 const eventSchema = z.object({
@@ -79,7 +79,7 @@ export default function EventsPage() {
       case 'in_progress': return 'bg-amber-500/20 text-amber-400 border-amber-500/20';
       case 'completed': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20';
       case 'cancelled': return 'bg-destructive/20 text-destructive border-destructive/20';
-      default: return 'bg-primary/5 text-white border-white/10';
+      default: return 'bg-white/10 text-white border-white/10';
     }
   };
 
@@ -163,7 +163,7 @@ export default function EventsPage() {
         </Dialog>
       </div>
 
-      <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+      <Card className="bg-card/40 border-white/10 backdrop-blur">
         <div className="p-4 border-b border-white/5 flex gap-4">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -191,11 +191,11 @@ export default function EventsPage() {
               {isLoading ? (
                 [...Array(5)].map((_, i) => (
                   <TableRow key={i} className="border-white/5">
-                    <TableCell><div className="h-4 w-32 bg-primary/5 animate-pulse rounded"></div></TableCell>
-                    <TableCell><div className="h-4 w-24 bg-primary/5 animate-pulse rounded"></div></TableCell>
-                    <TableCell><div className="h-4 w-24 bg-primary/5 animate-pulse rounded"></div></TableCell>
-                    <TableCell><div className="h-4 w-32 bg-primary/5 animate-pulse rounded"></div></TableCell>
-                    <TableCell><div className="h-6 w-20 bg-primary/5 animate-pulse rounded-full"></div></TableCell>
+                    <TableCell><div className="h-4 w-32 bg-white/5 animate-pulse rounded"></div></TableCell>
+                    <TableCell><div className="h-4 w-24 bg-white/5 animate-pulse rounded"></div></TableCell>
+                    <TableCell><div className="h-4 w-24 bg-white/5 animate-pulse rounded"></div></TableCell>
+                    <TableCell><div className="h-4 w-32 bg-white/5 animate-pulse rounded"></div></TableCell>
+                    <TableCell><div className="h-6 w-20 bg-white/5 animate-pulse rounded-full"></div></TableCell>
                     <TableCell></TableCell>
                   </TableRow>
                 ))
@@ -207,7 +207,7 @@ export default function EventsPage() {
                 </TableRow>
               ) : (
                 events?.map((event) => (
-                  <TableRow key={event.id} className="border-white/5 hover:bg-primary/5 cursor-pointer group" onClick={() => window.location.href = `/events/${event.id}`}>
+                  <TableRow key={event.id} className="border-white/5 hover:bg-white/5 cursor-pointer group" onClick={() => window.location.href = `/events/${event.id}`}>
                     <TableCell>
                       <div className="font-medium">{event.title}</div>
                       <div className="text-xs text-muted-foreground uppercase mt-1 tracking-wider">{event.type} • {event.guestCount} Guests</div>

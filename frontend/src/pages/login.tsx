@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useLoginUser } from "@/api";
+import { useLoginUser } from '@/api';
 import { useAuthStore } from '@/hooks/use-auth-store';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, ArrowRight } from 'lucide-react';
@@ -67,30 +67,28 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center premium-gradient-bg p-4 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-pink-100/50 rounded-full blur-[100px] animate-float"></div>
-        <div className="absolute -bottom-[20%] -right-[10%] w-[50%] h-[50%] bg-amber-100/50 rounded-full blur-[100px] animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-[20%] right-[20%] w-4 h-4 bg-primary/20 rounded-full animate-sparkle"></div>
-        <div className="absolute bottom-[30%] left-[15%] w-3 h-3 bg-amber-400/30 rounded-full animate-sparkle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px]"></div>
+        <div className="absolute -bottom-[20%] -right-[10%] w-[50%] h-[50%] bg-amber-500/5 rounded-full blur-[120px]"></div>
       </div>
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full max-w-md relative z-10 animate-fade-in"
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-md relative z-10"
       >
         <div className="mb-10 text-center">
           <Link href="/">
-            <div className="inline-block font-serif text-4xl font-bold tracking-widest text-transparent bg-clip-text premium-button-gradient cursor-pointer mb-6">VivahVerse</div>
+            <div className="inline-block font-serif text-3xl font-bold tracking-widest text-primary cursor-pointer mb-6">RIKA</div>
           </Link>
-          <h1 className="text-4xl font-serif font-medium mb-3 text-foreground">Welcome Back</h1>
-          <p className="text-muted-foreground font-sans text-lg">Continue planning your perfect day</p>
+          <h1 className="text-3xl font-medium mb-2">Welcome Back</h1>
+          <p className="text-muted-foreground">Sign in to access your command center</p>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-xl border border-primary/10 p-8 rounded-3xl premium-shadow">
+        <div className="bg-card/50 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
@@ -133,13 +131,13 @@ export default function LoginPage() {
               />
               <Button 
                 type="submit" 
-                className="w-full h-14 text-lg rounded-xl premium-button-gradient border-0 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5" 
+                className="w-full h-12 text-base" 
                 disabled={loginMutation.isPending}
               >
                 {loginMutation.isPending ? (
                   <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                 ) : (
-                  <>Sign In <ArrowRight className="ml-2 h-5 w-5" /></>
+                  <>Sign In <ArrowRight className="ml-2 h-4 w-4" /></>
                 )}
               </Button>
             </form>

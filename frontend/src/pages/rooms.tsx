@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetRooms } from "@/api";
+import { useGetRooms } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -28,7 +28,7 @@ export default function RoomsPage() {
         <Button className="shadow-lg shadow-primary/20">Add Room Block</Button>
       </div>
 
-      <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+      <Card className="bg-card/40 border-white/10 backdrop-blur">
         <div className="p-4 border-b border-white/5 flex gap-4">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />

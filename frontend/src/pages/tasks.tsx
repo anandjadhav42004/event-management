@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useGetTasks, useUpdateTask } from "@/api";
+import { useGetTasks, useUpdateTask } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, Calendar as CalendarIcon, User } from 'lucide-react';
 import { format } from 'date-fns';
 import { useQueryClient } from '@tanstack/react-query';
-import { getGetTasksQueryKey } from "@/api";
+import { getGetTasksQueryKey } from '@/api';
 
 const KANBAN_STAGES = [
   { id: 'todo', label: 'To Do' },
@@ -79,7 +79,7 @@ export default function TasksPage() {
                 >
                   <div className="p-3 border-b border-white/5 bg-white/[0.02] flex justify-between items-center shrink-0">
                     <h3 className="font-medium text-sm tracking-wide uppercase">{stage.label}</h3>
-                    <Badge variant="secondary" className="bg-primary/5 text-xs font-mono">{stageTasks.length}</Badge>
+                    <Badge variant="secondary" className="bg-white/10 text-xs font-mono">{stageTasks.length}</Badge>
                   </div>
                   
                   <div className="flex-1 overflow-y-auto p-3 space-y-3 custom-scrollbar">

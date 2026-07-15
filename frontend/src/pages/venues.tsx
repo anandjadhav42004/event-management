@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetVenues } from "@/api";
+import { useGetVenues } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -87,8 +87,8 @@ export default function VenuesPage() {
                 variants={cardHover}
                 className="h-full"
               >
-                <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors h-full cursor-pointer">
-                  <div className="h-48 bg-primary/5 relative overflow-hidden border-b border-white/5">
+                <Card className="bg-card/40 border-white/10 backdrop-blur overflow-hidden group hover:border-primary/50 transition-colors h-full cursor-pointer">
+                  <div className="h-48 bg-white/5 relative overflow-hidden border-b border-white/5">
                     {venue.imageUrl ? (
                       <motion.img
                         src={venue.imageUrl}
@@ -148,13 +148,13 @@ export default function VenuesPage() {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: i * 0.05 }}
-                                className="text-[10px] px-2 py-0.5 rounded-full bg-primary/5 border border-white/10 text-muted-foreground truncate max-w-[100px]"
+                                className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-muted-foreground truncate max-w-[100px]"
                               >
                                 {amenity.trim()}
                               </motion.span>
                             ))}
                           {venue.amenities.split(',').length > 3 && (
-                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/5 border border-white/10 text-muted-foreground">
+                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-muted-foreground">
                               +{venue.amenities.split(',').length - 3}
                             </span>
                           )}

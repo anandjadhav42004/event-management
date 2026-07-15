@@ -1,12 +1,12 @@
 import React from 'react';
-import { useGetNotifications, useMarkNotificationRead } from "@/api";
+import { useGetNotifications, useMarkNotificationRead } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, Bell, Calendar, CreditCard, CheckSquare, Info, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { useQueryClient } from '@tanstack/react-query';
-import { getGetNotificationsQueryKey } from "@/api";
+import { getGetNotificationsQueryKey } from '@/api';
 
 export default function NotificationsPage() {
   const { data: notifications, isLoading } = useGetNotifications();
@@ -80,7 +80,7 @@ export default function NotificationsPage() {
                         Mark as Read
                       </Button>
                       {notification.link && (
-                        <Button variant="ghost" size="sm" className="h-8 text-xs hover:bg-primary/5" onClick={() => window.location.href = notification.link!}>
+                        <Button variant="ghost" size="sm" className="h-8 text-xs hover:bg-white/10" onClick={() => window.location.href = notification.link!}>
                           View Details
                         </Button>
                       )}

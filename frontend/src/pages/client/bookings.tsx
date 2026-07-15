@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetBookings, useGetPayments } from "@/api";
+import { useGetBookings, useGetPayments } from '@/api';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
@@ -25,7 +25,7 @@ export default function ClientBookingsPage() {
       ) : primaryBooking ? (
         <>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+            <Card className="bg-card/40 border-white/10 backdrop-blur">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -37,7 +37,7 @@ export default function ClientBookingsPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+            <Card className="bg-card/40 border-white/10 backdrop-blur">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center">
@@ -68,7 +68,7 @@ export default function ClientBookingsPage() {
             </Card>
           </div>
 
-          <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl mt-8">
+          <Card className="bg-card/40 border-white/10 backdrop-blur mt-8">
             <CardHeader className="border-b border-white/5 bg-white/[0.02] flex flex-row items-center justify-between">
               <CardTitle className="font-serif text-xl font-medium">Payment History</CardTitle>
               <Button variant="outline" size="sm" className="bg-transparent border-white/10">
@@ -103,7 +103,7 @@ export default function ClientBookingsPage() {
                           </div>
                         </TableCell>
                         <TableCell>
-                          <Badge variant="outline" className={`uppercase text-[10px] tracking-wider ${payment.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20' : 'bg-primary/5'}`}>
+                          <Badge variant="outline" className={`uppercase text-[10px] tracking-wider ${payment.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20' : 'bg-white/10'}`}>
                             {payment.status}
                           </Badge>
                         </TableCell>
@@ -117,7 +117,7 @@ export default function ClientBookingsPage() {
           </Card>
         </>
       ) : (
-        <div className="text-center py-20 bg-primary/5 rounded-xl border border-white/5 mt-8">
+        <div className="text-center py-20 bg-white/5 rounded-xl border border-white/5 mt-8">
           <DollarSign className="w-10 h-10 text-muted-foreground mx-auto mb-4 opacity-50" />
           <h2 className="text-xl font-medium mb-2">No Financial Data</h2>
           <p className="text-muted-foreground">There are no bookings or invoices associated with your account yet.</p>

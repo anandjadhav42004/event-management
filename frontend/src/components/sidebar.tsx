@@ -113,9 +113,9 @@ export function Sidebar({ isOpen, userRole }: SidebarProps) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.2 }}
-              className="font-serif text-2xl font-bold text-primary tracking-widest bg-clip-text text-transparent premium-button-gradient"
+              className="font-serif text-2xl font-bold text-primary tracking-widest"
             >
-              VivahVerse
+              RIKA
             </motion.span>
           ) : (
             <motion.span
@@ -124,9 +124,9 @@ export function Sidebar({ isOpen, userRole }: SidebarProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="font-serif text-3xl font-bold text-primary tracking-widest bg-clip-text text-transparent premium-button-gradient"
+              className="font-serif text-2xl font-bold text-primary tracking-widest"
             >
-              V
+              R
             </motion.span>
           )}
         </AnimatePresence>
@@ -168,10 +168,10 @@ export function Sidebar({ isOpen, userRole }: SidebarProps) {
                       whileHover={{ x: 2, backgroundColor: 'hsl(var(--sidebar-accent) / 0.7)' }}
                       whileTap={{ scale: 0.97 }}
                       className={cn(
-                        'flex items-center gap-3 rounded-full px-4 py-2.5 text-sm font-medium cursor-pointer group relative transition-all duration-300',
+                        'flex items-center gap-3 rounded-md px-4 py-2.5 text-sm font-medium cursor-pointer group relative',
                         isActive
-                          ? 'bg-primary/10 text-primary shadow-sm'
-                          : 'text-sidebar-foreground hover:bg-sidebar-accent/30'
+                          ? 'bg-sidebar-accent text-sidebar-accent-foreground'
+                          : 'text-sidebar-foreground'
                       )}
                     >
                       {/* Active indicator bar */}

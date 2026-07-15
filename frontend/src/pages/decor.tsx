@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetDecorItems } from "@/api";
+import { useGetDecorItems } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -61,8 +61,8 @@ export default function DecorPage() {
       ) : (
         <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
           {items?.map(item => (
-            <Card key={item.id} className="break-inside-avoid bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors inline-block w-full">
-              <div className="aspect-[4/5] bg-primary/5 relative overflow-hidden border-b border-white/5">
+            <Card key={item.id} className="break-inside-avoid bg-card/40 border-white/10 backdrop-blur overflow-hidden group hover:border-primary/50 transition-colors inline-block w-full">
+              <div className="aspect-[4/5] bg-white/5 relative overflow-hidden border-b border-white/5">
                 {item.imageUrl ? (
                   <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
                 ) : (
@@ -77,7 +77,7 @@ export default function DecorPage() {
                 </div>
               </div>
               <CardContent className="p-5">
-                <Badge variant="secondary" className="bg-primary/5 text-[10px] uppercase tracking-wider mb-2 border-white/10">
+                <Badge variant="secondary" className="bg-white/5 text-[10px] uppercase tracking-wider mb-2 border-white/10">
                   {item.category}
                 </Badge>
                 <h3 className="font-serif text-lg font-medium leading-tight mb-2">{item.name}</h3>

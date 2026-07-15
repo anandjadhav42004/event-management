@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useGetEvents } from "@/api";
+import { useGetEvents } from '@/api';
 import { Calendar, MapPin, Users, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { format } from 'date-fns';
@@ -18,8 +18,8 @@ export default function ClientDashboardPage() {
     <div className="space-y-8 pb-8 max-w-5xl mx-auto">
       <div className="text-center py-10 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 rounded-full blur-[80px] pointer-events-none"></div>
-        <h1 className="text-4xl md:text-5xl font-serif font-medium mb-4 relative z-10 text-transparent bg-clip-text premium-button-gradient">Your Wedding Portal</h1>
-        <p className="text-muted-foreground relative z-10 text-lg font-sans">Track the progress of your upcoming celebration ✨</p>
+        <h1 className="text-4xl md:text-5xl font-serif font-medium mb-4 relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary via-amber-200 to-primary">Your Event Portal</h1>
+        <p className="text-muted-foreground relative z-10 text-lg font-light">Track the progress of your upcoming celebration</p>
       </div>
 
       {isLoading ? (
@@ -33,7 +33,7 @@ export default function ClientDashboardPage() {
           className="space-y-8"
         >
           {/* Main Event Card */}
-          <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl overflow-hidden relative">
+          <Card className="bg-card/40 border-primary/20 backdrop-blur overflow-hidden relative">
             <div className="absolute top-0 left-0 w-1 h-full bg-primary"></div>
             <CardContent className="p-8">
               <div className="flex flex-col md:flex-row justify-between gap-6">
@@ -60,7 +60,7 @@ export default function ClientDashboardPage() {
                   </div>
                 </div>
                 
-                <div className="flex flex-col items-center justify-center bg-primary/5 border border-primary/10 rounded-2xl p-6 min-w-[200px] premium-shadow">
+                <div className="flex flex-col items-center justify-center bg-white/5 border border-white/10 rounded-xl p-6 min-w-[200px]">
                   <div className="text-sm uppercase tracking-widest text-muted-foreground mb-2">Countdown</div>
                   <div className="text-4xl font-serif text-primary">
                     {Math.max(0, Math.ceil((new Date(primaryEvent.startDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)))}
@@ -72,21 +72,21 @@ export default function ClientDashboardPage() {
           </Card>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow premium-card-hover rounded-2xl cursor-pointer" onClick={() => window.location.href = '/client/tasks'}>
+            <Card className="bg-card/40 border-white/10 backdrop-blur hover:bg-white/5 transition-colors cursor-pointer" onClick={() => window.location.href = '/client/tasks'}>
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <Calendar className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-lg font-medium mb-1">Planning Checklist</h3>
                 <p className="text-sm text-muted-foreground mb-4">Review your upcoming tasks and decisions</p>
-                <div className="w-full bg-primary/5 rounded-full h-2">
+                <div className="w-full bg-white/5 rounded-full h-2">
                   <div className="bg-primary h-2 rounded-full" style={{ width: '45%' }}></div>
                 </div>
                 <div className="text-xs text-muted-foreground mt-2 text-right">45% Complete</div>
               </CardContent>
             </Card>
 
-            <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow premium-card-hover rounded-2xl cursor-pointer" onClick={() => window.location.href = '/client/guests'}>
+            <Card className="bg-card/40 border-white/10 backdrop-blur hover:bg-white/5 transition-colors cursor-pointer" onClick={() => window.location.href = '/client/guests'}>
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <Users className="w-6 h-6 text-primary" />
@@ -100,7 +100,7 @@ export default function ClientDashboardPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow premium-card-hover rounded-2xl cursor-pointer" onClick={() => window.location.href = '/client/bookings'}>
+            <Card className="bg-card/40 border-white/10 backdrop-blur hover:bg-white/5 transition-colors cursor-pointer" onClick={() => window.location.href = '/client/bookings'}>
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <Users className="w-6 h-6 text-primary" />
@@ -116,7 +116,7 @@ export default function ClientDashboardPage() {
         </motion.div>
       ) : (
         <div className="text-center py-20">
-          <div className="w-20 h-20 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
             <Calendar className="w-10 h-10 text-muted-foreground" />
           </div>
           <h2 className="text-2xl font-serif mb-2">No Active Events</h2>

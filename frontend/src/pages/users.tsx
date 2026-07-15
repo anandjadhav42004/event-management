@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetUsers } from "@/api";
+import { useGetUsers } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -18,7 +18,7 @@ export default function UsersPage() {
       case 'organizer': return 'bg-blue-500/20 text-blue-400 border-blue-500/20';
       case 'vendor': return 'bg-amber-500/20 text-amber-400 border-amber-500/20';
       case 'client': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20';
-      default: return 'bg-primary/5 text-white border-white/10';
+      default: return 'bg-white/10 text-white border-white/10';
     }
   };
 
@@ -29,7 +29,7 @@ export default function UsersPage() {
         <p className="text-muted-foreground">Manage access across the platform.</p>
       </div>
 
-      <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+      <Card className="bg-card/40 border-white/10 backdrop-blur">
         <div className="p-4 border-b border-white/5">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -63,7 +63,7 @@ export default function UsersPage() {
                       <div className="flex items-center gap-3">
                         <Avatar className="h-8 w-8 border border-white/10">
                           <AvatarImage src={user.avatar || undefined} />
-                          <AvatarFallback className="bg-primary/5 text-xs">{user.name.charAt(0)}</AvatarFallback>
+                          <AvatarFallback className="bg-white/5 text-xs">{user.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         <div>
                           <div className="font-medium">{user.name}</div>

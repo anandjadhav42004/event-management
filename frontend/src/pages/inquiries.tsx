@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useGetInquiries, useUpdateInquiry } from "@/api";
+import { useGetInquiries, useUpdateInquiry } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, Mail, Calendar, DollarSign, MoreVertical } from 'lucide-react';
 import { format } from 'date-fns';
 import { useQueryClient } from '@tanstack/react-query';
-import { getGetInquiriesQueryKey } from "@/api";
+import { getGetInquiriesQueryKey } from '@/api';
 
 const KANBAN_STAGES = [
   { id: 'new', label: 'New Lead' },
@@ -72,7 +72,7 @@ export default function InquiriesPage() {
                 >
                   <div className="p-3 border-b border-white/5 bg-white/[0.02] flex justify-between items-center shrink-0">
                     <h3 className="font-medium text-sm tracking-wide uppercase">{stage.label}</h3>
-                    <Badge variant="secondary" className="bg-primary/5 text-xs font-mono">{stageInquiries.length}</Badge>
+                    <Badge variant="secondary" className="bg-white/10 text-xs font-mono">{stageInquiries.length}</Badge>
                   </div>
                   
                   <div className="flex-1 overflow-y-auto p-3 space-y-3 custom-scrollbar">

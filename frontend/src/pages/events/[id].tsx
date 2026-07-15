@@ -6,7 +6,7 @@ import {
   useGetBookings,
   useGetGuests,
   getGetEventQueryKey,
-} from "@/api";
+} from '@/api';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -42,7 +42,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
       case 'in_progress': return 'bg-amber-500/20 text-amber-400 border-amber-500/20';
       case 'completed': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20';
       case 'cancelled': return 'bg-destructive/20 text-destructive border-destructive/20';
-      default: return 'bg-primary/5 text-white border-white/10';
+      default: return 'bg-white/10 text-white border-white/10';
     }
   };
 
@@ -74,7 +74,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+        <Card className="bg-card/40 border-white/10 backdrop-blur">
           <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
             <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-2">
               <Clock className="w-5 h-5 text-primary" />
@@ -86,7 +86,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
           </CardContent>
         </Card>
         
-        <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+        <Card className="bg-card/40 border-white/10 backdrop-blur">
           <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
             <div className="w-10 h-10 rounded-full bg-chart-2/10 flex items-center justify-center mb-2">
               <DollarSign className="w-5 h-5 text-chart-2" />
@@ -96,7 +96,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
           </CardContent>
         </Card>
 
-        <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+        <Card className="bg-card/40 border-white/10 backdrop-blur">
           <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
             <div className="w-10 h-10 rounded-full bg-chart-3/10 flex items-center justify-center mb-2">
               <CheckSquare className="w-5 h-5 text-chart-3" />
@@ -104,12 +104,12 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
             <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Tasks</div>
             <div className="w-full mt-2">
               <div className="flex justify-between text-xs mb-1"><span>{completedTasks}/{totalTasks}</span> <span>{taskProgress}%</span></div>
-              <div className="w-full bg-primary/5 rounded-full h-1.5"><div className="bg-chart-3 h-1.5 rounded-full" style={{ width: `${taskProgress}%` }}></div></div>
+              <div className="w-full bg-white/5 rounded-full h-1.5"><div className="bg-chart-3 h-1.5 rounded-full" style={{ width: `${taskProgress}%` }}></div></div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+        <Card className="bg-card/40 border-white/10 backdrop-blur">
           <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
             <div className="w-10 h-10 rounded-full bg-chart-4/10 flex items-center justify-center mb-2">
               <Users className="w-5 h-5 text-chart-4" />
@@ -121,7 +121,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
       </div>
 
       <Tabs defaultValue="overview" className="w-full mt-8">
-        <TabsList className="bg-primary/5 border-white/10 mb-6">
+        <TabsList className="bg-white/5 border-white/10 mb-6">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="tasks">Tasks ({totalTasks})</TabsTrigger>
           <TabsTrigger value="guests">Guests ({guests?.length || 0})</TabsTrigger>
@@ -129,7 +129,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
         </TabsList>
         
         <TabsContent value="overview" className="space-y-6">
-          <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+          <Card className="bg-card/40 border-white/10 backdrop-blur">
             <CardHeader><CardTitle className="font-serif text-lg">Event Notes</CardTitle></CardHeader>
             <CardContent>
               {event.notes ? <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap">{event.notes}</p> : <p className="text-muted-foreground/50 italic">No notes added.</p>}
@@ -138,10 +138,10 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
         </TabsContent>
         
         <TabsContent value="tasks">
-          <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+          <Card className="bg-card/40 border-white/10 backdrop-blur">
             <CardContent className="p-0">
               <Table>
-                <TableHeader className="bg-primary/5 border-white/5">
+                <TableHeader className="bg-white/5 border-white/5">
                   <TableRow className="border-white/5">
                     <TableHead>Task</TableHead>
                     <TableHead>Assignee</TableHead>
@@ -157,8 +157,8 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
                     <TableRow key={task.id} className="border-white/5">
                       <TableCell className="font-medium">{task.title}</TableCell>
                       <TableCell className="text-muted-foreground">{task.assigneeName || 'Unassigned'}</TableCell>
-                      <TableCell><Badge variant="outline" className="uppercase text-[10px] bg-primary/5 border-white/10">{task.priority}</Badge></TableCell>
-                      <TableCell><Badge variant="outline" className={`uppercase text-[10px] ${task.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20' : 'bg-primary/5 border-white/10'}`}>{task.status.replace('_', ' ')}</Badge></TableCell>
+                      <TableCell><Badge variant="outline" className="uppercase text-[10px] bg-white/5 border-white/10">{task.priority}</Badge></TableCell>
+                      <TableCell><Badge variant="outline" className={`uppercase text-[10px] ${task.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20' : 'bg-white/5 border-white/10'}`}>{task.status.replace('_', ' ')}</Badge></TableCell>
                       <TableCell className="text-muted-foreground">{task.dueDate ? format(new Date(task.dueDate), 'MMM d, yyyy') : '-'}</TableCell>
                     </TableRow>
                   ))}
@@ -169,10 +169,10 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
         </TabsContent>
 
         <TabsContent value="guests">
-           <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+           <Card className="bg-card/40 border-white/10 backdrop-blur">
             <CardContent className="p-0">
               <Table>
-                <TableHeader className="bg-primary/5 border-white/5">
+                <TableHeader className="bg-white/5 border-white/5">
                   <TableRow className="border-white/5">
                     <TableHead>Name</TableHead>
                     <TableHead>Email</TableHead>
@@ -188,7 +188,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
                     <TableRow key={guest.id} className="border-white/5">
                       <TableCell className="font-medium">{guest.name}</TableCell>
                       <TableCell className="text-muted-foreground">{guest.email}</TableCell>
-                      <TableCell><Badge variant="outline" className={`uppercase text-[10px] ${guest.rsvpStatus === 'confirmed' ? 'bg-primary/20 text-primary border-primary/20' : 'bg-primary/5 border-white/10'}`}>{guest.rsvpStatus}</Badge></TableCell>
+                      <TableCell><Badge variant="outline" className={`uppercase text-[10px] ${guest.rsvpStatus === 'confirmed' ? 'bg-primary/20 text-primary border-primary/20' : 'bg-white/5 border-white/10'}`}>{guest.rsvpStatus}</Badge></TableCell>
                       <TableCell className="text-muted-foreground">{guest.tableNumber || '-'}</TableCell>
                       <TableCell className="text-muted-foreground capitalize">{guest.mealPreference || '-'}</TableCell>
                     </TableRow>
@@ -200,10 +200,10 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
         </TabsContent>
 
         <TabsContent value="financials">
-           <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+           <Card className="bg-card/40 border-white/10 backdrop-blur">
             <CardContent className="p-0">
               <Table>
-                <TableHeader className="bg-primary/5 border-white/5">
+                <TableHeader className="bg-white/5 border-white/5">
                   <TableRow className="border-white/5">
                     <TableHead>Booking ID</TableHead>
                     <TableHead>Status</TableHead>
@@ -218,7 +218,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
                   ) : bookings?.map(booking => (
                     <TableRow key={booking.id} className="border-white/5">
                       <TableCell className="font-medium font-mono">BKG-{booking.id.toString().padStart(4, '0')}</TableCell>
-                      <TableCell><Badge variant="outline" className="uppercase text-[10px] bg-primary/5 border-white/10">{booking.status.replace('_', ' ')}</Badge></TableCell>
+                      <TableCell><Badge variant="outline" className="uppercase text-[10px] bg-white/5 border-white/10">{booking.status.replace('_', ' ')}</Badge></TableCell>
                       <TableCell className="text-right font-medium">${booking.totalAmount.toLocaleString()}</TableCell>
                       <TableCell className="text-right text-emerald-400">${booking.paidAmount.toLocaleString()}</TableCell>
                       <TableCell className="text-right text-amber-400 font-medium">${booking.balanceAmount?.toLocaleString() || 0}</TableCell>

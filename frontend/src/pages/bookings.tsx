@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetBookings } from "@/api";
+import { useGetBookings } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -22,7 +22,7 @@ export default function BookingsPage() {
       case 'advance_paid': return 'bg-blue-500/20 text-blue-400 border-blue-500/20';
       case 'pending': return 'bg-amber-500/20 text-amber-400 border-amber-500/20';
       case 'cancelled': return 'bg-destructive/20 text-destructive border-destructive/20';
-      default: return 'bg-primary/5 text-white border-white/10';
+      default: return 'bg-white/10 text-white border-white/10';
     }
   };
 
@@ -33,7 +33,7 @@ export default function BookingsPage() {
         <p className="text-muted-foreground">Financial overview of contracted events.</p>
       </div>
 
-      <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+      <Card className="bg-card/40 border-white/10 backdrop-blur">
         <div className="p-4 border-b border-white/5 flex gap-4">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />

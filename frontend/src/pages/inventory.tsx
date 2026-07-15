@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetInventoryItems } from "@/api";
+import { useGetInventoryItems } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -21,7 +21,7 @@ export default function InventoryPage() {
         <Button className="shadow-lg shadow-primary/20"><Package className="w-4 h-4 mr-2" /> Receive Stock</Button>
       </div>
 
-      <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+      <Card className="bg-card/40 border-white/10 backdrop-blur">
         <div className="p-4 border-b border-white/5 flex gap-4">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -61,7 +61,7 @@ export default function InventoryPage() {
                         {item.description && <div className="text-xs text-muted-foreground mt-1 truncate max-w-[200px]">{item.description}</div>}
                       </TableCell>
                       <TableCell>
-                        <Badge variant="outline" className="uppercase text-[10px] tracking-wider bg-primary/5 border-white/10">
+                        <Badge variant="outline" className="uppercase text-[10px] tracking-wider bg-white/5 border-white/10">
                           {item.category}
                         </Badge>
                       </TableCell>

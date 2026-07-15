@@ -17,11 +17,11 @@ const stagger = {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen premium-gradient-bg text-foreground flex flex-col font-sans selection:bg-primary/30">
+    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans selection:bg-primary/30">
       {/* Navigation */}
-      <nav className="fixed w-full z-50 top-0 border-b border-primary/10 bg-white/80 backdrop-blur-md">
+      <nav className="fixed w-full z-50 top-0 border-b border-white/5 bg-background/50 backdrop-blur-md">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="font-serif text-3xl font-bold tracking-widest text-transparent bg-clip-text premium-button-gradient">VivahVerse</div>
+          <div className="font-serif text-3xl font-bold tracking-widest text-primary">RIKA</div>
           <div className="hidden md:flex gap-8 text-sm font-medium text-muted-foreground">
             <a href="#features" className="hover:text-primary transition-colors">Features</a>
             <a href="#modules" className="hover:text-primary transition-colors">Platform</a>
@@ -32,7 +32,7 @@ export default function LandingPage() {
               <Button variant="ghost" className="text-primary hover:text-primary hover:bg-primary/10">Sign In</Button>
             </Link>
             <Link href="/register">
-              <Button className="premium-button-gradient border-0 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5">Get Started</Button>
+              <Button>Get Started</Button>
             </Link>
           </div>
         </div>
@@ -41,9 +41,9 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden flex-1 flex flex-col justify-center">
         <div className="absolute inset-0 z-0">
-          <img src={heroBg} alt="Luxury Event" className="w-full h-full object-cover opacity-15" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent"></div>
+          <img src={heroBg} alt="Luxury Event" className="w-full h-full object-cover opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent"></div>
         </div>
         
         <div className="container mx-auto px-6 relative z-10">
@@ -55,20 +55,20 @@ export default function LandingPage() {
           >
             <motion.div variants={fadeIn} className="flex items-center gap-4 mb-6">
               <div className="h-[1px] w-12 bg-primary"></div>
-              <span className="text-primary uppercase tracking-widest text-sm font-medium">Premium Wedding Management ✨</span>
+              <span className="text-primary uppercase tracking-widest text-sm font-medium">Enterprise Event Management</span>
             </motion.div>
             <motion.h1 variants={fadeIn} className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.1] mb-6 text-foreground">
-              Create <span className="text-transparent bg-clip-text premium-button-gradient italic">Unforgettable</span><br />
-              Wedding Experiences.
+              Create <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-300 italic">Memories.</span><br />
+              Master Every Detail.
             </motion.h1>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-10 max-w-2xl font-sans leading-relaxed">
-              The premier platform for luxury wedding planners and couples.
-              Elevate your celebration from dream to unforgettable reality.
+            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-10 max-w-2xl font-light leading-relaxed">
+              The premier command center for luxury wedding planners and high-end event organizers. 
+              Elevate your operations from scattered spreadsheets to a unified, flawless experience.
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-wrap gap-4">
               <Link href="/register">
-                <Button size="lg" className="h-14 px-8 text-base premium-button-gradient border-0 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                  Book Your Dream Wedding <ArrowRight className="ml-2 h-5 w-5" />
+                <Button size="lg" className="h-14 px-8 text-base shadow-xl shadow-primary/20">
+                  Request Access <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="#features">
@@ -82,14 +82,14 @@ export default function LandingPage() {
       </section>
 
       {/* Stats / Trust Banner */}
-      <section className="border-y border-primary/10 bg-white/60 backdrop-blur-sm">
+      <section className="border-y border-white/5 bg-white/[0.02]">
         <div className="container mx-auto px-6 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
-              { label: 'Weddings Planned', value: '10,000+' },
-              { label: 'Premium Vendors', value: '5,000+' },
+              { label: 'Events Managed', value: '10,000+' },
+              { label: 'Luxury Vendors', value: '5,000+' },
               { label: 'Platform Uptime', value: '99.99%' },
-              { label: 'Couple Satisfaction', value: '4.9/5' }
+              { label: 'Client Satisfaction', value: '4.9/5' }
             ].map((stat, i) => (
               <div key={i} className="text-center md:text-left border-l border-primary/20 pl-6">
                 <div className="text-3xl md:text-4xl font-serif text-primary mb-2">{stat.value}</div>
@@ -142,7 +142,7 @@ export default function LandingPage() {
                 desc: "Intelligent workflow automation ensuring no detail is missed by your team or external vendors."
               }
             ].map((feature, i) => (
-              <Card key={i} className="bg-white/80 border-primary/10 hover:border-primary/30 transition-all duration-300 group backdrop-blur-sm premium-shadow premium-card-hover rounded-2xl">
+              <Card key={i} className="bg-white/5 border-white/10 hover:border-primary/50 transition-colors duration-300 group backdrop-blur-sm">
                 <CardContent className="p-8">
                   <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                     <feature.icon className="h-6 w-6 text-primary" />
@@ -157,12 +157,12 @@ export default function LandingPage() {
       </section>
 
       {/* Modules Showcase */}
-      <section id="modules" className="py-24 bg-white/50 border-y border-primary/10 overflow-hidden">
+      <section id="modules" className="py-24 bg-card/50 border-y border-white/5 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
-              <h2 className="font-serif text-4xl md:text-5xl mb-6 text-primary">The Client Portal</h2>
-              <p className="text-xl text-muted-foreground mb-8 font-sans">
+              <h2 className="font-serif text-4xl md:text-5xl mb-6">The Client Portal</h2>
+              <p className="text-xl text-muted-foreground mb-8 font-light">
                 Give your clients a branded, white-glove digital experience. They can review proposals, sign contracts, pay invoices, and monitor planning progress from their own dedicated dashboard.
               </p>
               <ul className="space-y-6">
@@ -181,23 +181,23 @@ export default function LandingPage() {
                 {/* Abstract UI representation instead of generic screenshot */}
                 <div className="w-[80%] h-[80%] rounded-xl border border-white/5 shadow-2xl bg-card flex flex-col overflow-hidden">
                   <div className="h-12 border-b border-white/5 flex items-center px-4 gap-2">
-                    <div className="w-3 h-3 rounded-full bg-primary/5"></div>
-                    <div className="w-3 h-3 rounded-full bg-primary/5"></div>
-                    <div className="w-3 h-3 rounded-full bg-primary/5"></div>
+                    <div className="w-3 h-3 rounded-full bg-white/10"></div>
+                    <div className="w-3 h-3 rounded-full bg-white/10"></div>
+                    <div className="w-3 h-3 rounded-full bg-white/10"></div>
                   </div>
                   <div className="flex-1 p-6 flex gap-6">
                     <div className="w-1/4 flex flex-col gap-4">
-                      <div className="h-8 bg-primary/5 rounded-md"></div>
-                      <div className="h-8 bg-primary/5 rounded-md w-3/4"></div>
-                      <div className="h-8 bg-primary/5 rounded-md w-5/6"></div>
+                      <div className="h-8 bg-white/5 rounded-md"></div>
+                      <div className="h-8 bg-white/5 rounded-md w-3/4"></div>
+                      <div className="h-8 bg-white/5 rounded-md w-5/6"></div>
                     </div>
                     <div className="w-3/4 flex flex-col gap-6">
                       <div className="flex gap-4">
                         <div className="h-24 flex-1 bg-primary/10 border border-primary/20 rounded-xl"></div>
-                        <div className="h-24 flex-1 bg-primary/5 rounded-xl"></div>
-                        <div className="h-24 flex-1 bg-primary/5 rounded-xl"></div>
+                        <div className="h-24 flex-1 bg-white/5 rounded-xl"></div>
+                        <div className="h-24 flex-1 bg-white/5 rounded-xl"></div>
                       </div>
-                      <div className="flex-1 bg-primary/5 rounded-xl"></div>
+                      <div className="flex-1 bg-white/5 rounded-xl"></div>
                     </div>
                   </div>
                 </div>
@@ -218,7 +218,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                quote: "VivahVerse has completely transformed how we manage our high-profile weddings. The level of detail we can track is unprecedented.",
+                quote: "Rika has completely transformed how we manage our high-profile weddings. The level of detail we can track is unprecedented.",
                 author: "Eleanor Vance",
                 role: "Founder, Vance Luxury Events"
               },
@@ -233,7 +233,7 @@ export default function LandingPage() {
                 role: "Head Planner, The Azure Group"
               }
             ].map((t, i) => (
-              <Card key={i} className="bg-white/80 border-primary/10 relative premium-shadow premium-card-hover rounded-2xl">
+              <Card key={i} className="bg-transparent border-white/10 relative">
                 <div className="absolute -top-4 -left-2 text-6xl text-primary/20 font-serif">"</div>
                 <CardContent className="pt-10 pb-8 px-8 relative z-10 flex flex-col h-full">
                   <p className="text-lg italic text-muted-foreground mb-8 flex-1">{t.quote}</p>
@@ -255,10 +255,10 @@ export default function LandingPage() {
         <div className="container mx-auto px-6 relative z-10 text-center">
           <h2 className="font-serif text-4xl md:text-6xl mb-6">Ready to Elevate Your Standard?</h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto font-light">
-            Join the world's most prestigious event management firms. Request access to VivahVerse today.
+            Join the world's most prestigious event management firms. Request access to Rika Events today.
           </p>
           <Link href="/register">
-            <Button size="lg" className="h-14 px-10 text-lg premium-button-gradient border-0 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1">
+            <Button size="lg" className="h-14 px-10 text-lg shadow-2xl shadow-primary/20">
               Start Your Journey
             </Button>
           </Link>
@@ -266,11 +266,11 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white/50 py-12 border-t border-primary/10">
+      <footer className="bg-background py-12 border-t border-white/5">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-          <div className="font-serif text-2xl font-bold tracking-widest text-transparent bg-clip-text premium-button-gradient mb-4 md:mb-0">VivahVerse</div>
+          <div className="font-serif text-2xl font-bold tracking-widest text-primary mb-4 md:mb-0">RIKA</div>
           <div className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} VivahVerse Platform. All rights reserved.
+            &copy; {new Date().getFullYear()} Rika Events Platform. All rights reserved.
           </div>
         </div>
       </footer>

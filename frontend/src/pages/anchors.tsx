@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetAnchors } from "@/api";
+import { useGetAnchors } from '@/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -39,8 +39,8 @@ export default function AnchorsPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {anchors?.map(anchor => (
-            <Card key={anchor.id} className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors">
-              <div className="aspect-square bg-primary/5 relative overflow-hidden flex items-center justify-center border-b border-white/5">
+            <Card key={anchor.id} className="bg-card/40 border-white/10 backdrop-blur overflow-hidden group hover:border-primary/50 transition-colors">
+              <div className="aspect-square bg-white/5 relative overflow-hidden flex items-center justify-center border-b border-white/5">
                 {anchor.imageUrl ? (
                   <img src={anchor.imageUrl} alt={anchor.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
                 ) : (

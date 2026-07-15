@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useGetMe, useUpdateUser } from "@/api";
+import { useGetMe, useUpdateUser } from '@/api';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -12,7 +12,7 @@ import { Loader2, User, Lock, Bell, CheckCircle2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useQueryClient } from '@tanstack/react-query';
-import { getGetMeQueryKey } from "@/api";
+import { getGetMeQueryKey } from '@/api';
 
 const profileSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -72,7 +72,7 @@ export default function SettingsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-1 space-y-6">
-          <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl text-center pt-8">
+          <Card className="bg-card/40 border-white/10 backdrop-blur text-center pt-8">
             <CardContent>
               <Avatar className="h-24 w-24 mx-auto mb-4 border-2 border-primary/20">
                 <AvatarImage src={user?.avatar || undefined} />
@@ -89,20 +89,20 @@ export default function SettingsPage() {
           </Card>
 
           <div className="flex flex-col gap-2">
-            <Button variant="ghost" className="justify-start bg-primary/5 border border-white/10">
+            <Button variant="ghost" className="justify-start bg-white/5 border border-white/10">
               <User className="w-4 h-4 mr-2" /> Profile Details
             </Button>
-            <Button variant="ghost" className="justify-start hover:bg-primary/5">
+            <Button variant="ghost" className="justify-start hover:bg-white/5">
               <Lock className="w-4 h-4 mr-2" /> Security
             </Button>
-            <Button variant="ghost" className="justify-start hover:bg-primary/5">
+            <Button variant="ghost" className="justify-start hover:bg-white/5">
               <Bell className="w-4 h-4 mr-2" /> Notifications
             </Button>
           </div>
         </div>
 
         <div className="md:col-span-2 space-y-6">
-          <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+          <Card className="bg-card/40 border-white/10 backdrop-blur">
             <CardHeader className="border-b border-white/5 pb-4">
               <CardTitle className="text-lg font-serif">Profile Details</CardTitle>
               <CardDescription>Update your personal information and contact details.</CardDescription>
@@ -155,7 +155,7 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-white/90 border-primary/10 backdrop-blur premium-shadow rounded-2xl">
+          <Card className="bg-card/40 border-white/10 backdrop-blur">
             <CardHeader className="border-b border-white/5 pb-4">
               <CardTitle className="text-lg font-serif">Notification Preferences</CardTitle>
               <CardDescription>Choose what updates you want to receive.</CardDescription>
